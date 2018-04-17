@@ -1,0 +1,3 @@
+f5-sdk
+PrettyTable
+IPy
