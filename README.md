@@ -19,7 +19,8 @@ Use help options for displaying help and possible operations
 
 - Show Selfs ips:
 ``f5-client 192.168.1.41 admin -passwd --show SE``
-``+-----------+------------------------+------------------------------+---------------------+``
+
+``+----------+------------------------+------------------------------+---------------------+``
 
  ``| Partition | Self IP Name           | VLAN                         | Address             |``
 ``+-----------+------------------------+------------------------------+---------------------+``
@@ -37,10 +38,15 @@ Use help options for displaying help and possible operations
  ``| Common    | selfip_vlan37          | /Common/LAB_F5_Syn           | 1.1.1.1/29          |``
 
  ``+-----------+------------------------+------------------------------+---------------------+``
+
 - Check VS and SNATs:
+
 ``f5-client 192.168.1.41 admin -passwd --show SN VS``
-- Create pool
+
+- Create pool:
+
 ``f5-client 192.168.1.1 admin -passwd --create-pool members.txt pool1 Project_387b85b4465e4a538aea77abddd347e2``
-- Create VS
+- Create VS:
+
 ``f5-client 192.168.1.1 admin -passwd --create-vs pool_test3 vs-test5 10.0.10.8:85 Project_387b85b4465e4a538aea77abddd347e2 Project_387b85b4465e4a538aea77abddd347e2``
 
