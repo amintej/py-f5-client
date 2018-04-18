@@ -5,7 +5,7 @@ with open('README.rst','r') as f:
 
 setup(
     name='f5-client',
-    version='0.0.15',
+    version='0.0.22',
     description='Manage F5 using f5-sdk',
     long_description=readme,
     author='amintej',

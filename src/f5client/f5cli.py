@@ -21,7 +21,7 @@ def get_args():
     parser.add_argument("user",  help="Big ip user")
     parser.add_argument("-passwd",nargs='?',action=Password,help="Enter your password")
     #parser.add_argument("-passwd",help="Enter your password")
-    parser.add_argument("--show",nargs="*",choices=('PA','SE','SN','PO','VS','NO'), help="PA for showing Partitions,\nSE for showing Selfips,\nSN for showing SNATs pool,\nVS for showing Virtual Servers,\nNO for showing nodes.\nMuliple arguments allowed. Example: --show PA SE SN ")
+    parser.add_argument("--show",nargs="*",choices=('PA','US','VO','SE','SN','PO','VS','NO'), help="PA for showing Partitions,\nUS for showing users,\nVO for showing volumes,\nSE for showing Selfips,\nSN for showing SNATs pool,\nVS for showing Virtual Servers,\nNO for showing nodes.\nMuliple arguments allowed. Example: --show PA SE SN ")
     #parser.add_argument("--create-nodes",metavar='<filename>',help="Create nodes from a file.One node's IP per line. Example file content: \n192.168.1.1\n192.168.1.2")
     parser.add_argument("--create-pool",metavar=('<filename>','<poolname>','<partition>'),nargs=3,help="Create pool and members from a file.Example file content: \n192.168.1.1 server1.local:443\n192.168.1.2 server2.local:443")
     parser.add_argument("--create-vs",nargs=5,metavar=( '   <poolname>', '<vsname>', '<IP:Port>','<partition>','<snatpool>'),help="Create virtual server.")
@@ -42,6 +42,8 @@ def get_args():
 def main():
     from f5client import login
     from f5client import partitions
+    from f5client import users
+    from f5client import volumes
     from f5client import selfs
     from f5client import snats
     from f5client import nodes
@@ -57,6 +59,12 @@ def main():
             if item == "PA":
                tpartitions=partitions.get_partitions(mgmt)
                print tpartitions.get_string(sortby="Partition")
+            elif item == "US" or item == "AL":
+               tusers=users.get_users(mgmt)
+               print tusers.get_string(sortby="Partition Access")
+            elif item == "VO" or item == "AL":
+               tvolumes=volumes.get_volumes(mgmt)
+               print tvolumes.get_string(sortby="Name")
             elif item == "SE" or item == "AL":
                tselfs=selfs.get_selfs(mgmt)
                print tselfs.get_string(sortby="Partition")

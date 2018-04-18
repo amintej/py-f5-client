@@ -16,4 +16,6 @@ src/f5client/partitions.py
 src/f5client/pools.py
 src/f5client/selfs.py
 src/f5client/snats.py
+src/f5client/users.py
 src/f5client/virtualservers.py
+src/f5client/volumes.py
